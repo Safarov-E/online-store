@@ -18,10 +18,13 @@
             </v-list>
         </v-navigation-drawer>
         <v-app-bar dark color="primary">
-            <v-app-bar-nav-icon @click="sideNav = !sideNav"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon 
+                @click="sideNav = !sideNav"
+                class="hidden-md-and-up"
+            ></v-app-bar-nav-icon>
             <v-toolbar-title>Online Store</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-list-item-icon>
+            <v-list-item-icon class="hidden-sm-and-down">
                 <v-btn 
                     text
                     v-for="(link, i) in links"
