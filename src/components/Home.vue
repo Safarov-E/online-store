@@ -28,12 +28,16 @@
                         class="mx-auto"
                         max-width="400"
                     >
+                        <router-link
+                        :aria-label="product.title"
+                        :to="'/product/' + product.id"
+                    >
                         <v-img
                         height="350px"
                         :src="product.imageSrc"
                         >
                         </v-img>
-
+                    </router-link>
                         <v-card-text class="text--primary">
                         <h3 class="card_heading heading">{{ product.title }}</h3>
 

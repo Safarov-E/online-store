@@ -22,7 +22,13 @@
                 @click="sideNav = !sideNav"
                 class="hidden-md-and-up"
             ></v-app-bar-nav-icon>
-            <v-toolbar-title>Online Store</v-toolbar-title>
+            <v-toolbar-title>
+                <router-link
+                    to="/"
+                    tag="span"
+                    class="pointer"
+                >Online Store</router-link>
+                </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-list-item-icon class="hidden-sm-and-down">
                 <v-btn 
@@ -58,3 +64,9 @@ export default {
     }
 }
 </script>
+
+<style scode>
+    .pointer {
+        cursor: pointer;
+    }
+</style>
