@@ -72,7 +72,8 @@
                     <v-flex xs12>
                         <v-spacer></v-spacer>
                         <v-btn
-                            :disabled="!valid"
+                            :loading="loading"
+                            :disabled="!valid || loading"
                             class="success"
                             @click="createProduct"
                         >Create Product</v-btn>
@@ -96,6 +97,11 @@ export default {
             valid: false
         }
     },
+    computed: {
+        loading() {
+            return this.$store.getters.loading
+        }
+    },
     methods: {
         createProduct () {
             if(this.$refs.form.validate()) {
@@ -106,9 +112,14 @@ export default {
                     material: this.material,
                     price: this.price,
                     description: this.description,
-                    promo: this.promo
+                    promo: this.promo,
+                    imageSrc: 'https://image.ibb.co/fZzq1o/Lenovo_Legion_Y520.jpg'
                 }
-                console.log(product)
+                this.$store.dispatch('createProduct', product)
+                .then(() => {
+                    this.$router.push('/list')
+                })
+                .catch(() => {})
             }
         }
     }
