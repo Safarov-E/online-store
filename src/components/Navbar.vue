@@ -15,6 +15,18 @@
                         <v-list-item-title v-text="link.title"></v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-list-item
+                    @click="onLogout"
+                    v-if="isUserLoggedIn"
+                >
+                    <v-list-item-icon>
+                        <v-icon>mdi-exit-to-app</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title v-text="'Logout'"></v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
             </v-list>
         </v-navigation-drawer>
         <v-app-bar dark color="primary">
@@ -40,6 +52,14 @@
                     <v-icon left>{{ link.icon }}</v-icon>
                         {{ link.title }}
                     </v-btn>
+                <v-btn 
+                    text
+                    @click="onLogout"
+                    v-if="isUserLoggedIn"
+                >
+                    <v-icon left>mdi-exit-to-app</v-icon>
+                       Logout
+                    </v-btn>
             </v-list-item-icon>
         </v-app-bar>
         <v-content>
@@ -52,13 +72,30 @@
 export default {
     data() {
         return {
-            sideNav: false,
-            links: [
+            sideNav: false
+        }
+    },
+    methods: {
+        onLogout() {
+            this.$store.dispatch('logoutUser')
+            this.$router.push('/')
+        }
+    },
+    computed: {
+        isUserLoggedIn() {
+            return this.$store.getters.isUserLoggedIn
+        },
+        links () {
+            if(this.isUserLoggedIn) {
+                return [
+                    { title: 'Cart', icon: 'mdi-cart', url: '/checkout' },
+                    { title: 'New Product', icon: 'mdi-plus', url: '/new' },
+                    { title: 'My Products', icon: 'mdi-format-list-bulleted', url: '/list' }
+                ]
+            }
+            return [
                 { title: 'Login', icon: 'mdi-account-box', url: '/login' },
-                { title: 'Register', icon: 'mdi-face', url: '/register' },
-                { title: 'Cart', icon: 'mdi-cart', url: '/checkout' },
-                { title: 'New Product', icon: 'mdi-plus', url: '/new' },
-                { title: 'My Products', icon: 'mdi-format-list-bulleted', url: '/list' }
+                { title: 'Register', icon: 'mdi-face', url: '/register' }
             ]
         }
     }

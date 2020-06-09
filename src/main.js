@@ -28,5 +28,10 @@ new Vue({
       measurementId: "G-H72RP0GGVY"
     }
     fb.initializeApp(firebaseConfig)
+    fb.auth().onAuthStateChanged(user => {
+      if(user) {
+        this.$store.dispatch('autoLoginUser', user)
+      }
+    })
   }
 }).$mount('#app')
