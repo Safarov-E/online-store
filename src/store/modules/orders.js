@@ -22,7 +22,7 @@ export default {
     actions: {
         async createOrder({commit}, {name, phone, productId, ownerId}) {
             const order = new Order(name, phone, productId)
-            commit('setError')
+            commit('clearError')
             try {
                 await fb.database().ref(`/users/${ownerId}/orders`).push(order)
             } catch(error) {

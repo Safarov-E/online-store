@@ -8,7 +8,7 @@
                     v-for="(product, i) in myProducts"
                     :key="i"
                 >
-                    <v-layout>
+                    <v-layout row>
                         <v-flex xs4>
                             <v-img
                                 :src="product.imageSrc"

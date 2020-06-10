@@ -46,7 +46,7 @@
                       v-model="description"
                     ></v-text-field>
                   </v-form>
-                <v-layout class="mb-3">
+                <v-layout row class="mb-3">
                     <v-flex xs12>
                         <v-btn class="warning" @click="upload">
                             Upload
@@ -61,12 +61,12 @@
                         >
                     </v-flex>
                 </v-layout>
-                <v-layout>
+                <v-layout row>
                     <v-flex xs12>
                         <img :src="imageSrc" height="200px" v-if="imageSrc">
                     </v-flex>
                 </v-layout>
-                <v-layout>
+                <v-layout row>
                     <v-flex xs12>
                         <v-switch
                             color="primary"
@@ -75,7 +75,7 @@
                         ></v-switch>
                     </v-flex>
                 </v-layout>
-                <v-layout>
+                <v-layout row>
                     <v-flex xs12>
                         <v-spacer></v-spacer>
                         <v-btn

@@ -16,13 +16,13 @@
                         <v-card-text>
                             <v-text-field
                                 name="name"
-                                label="Name"
+                                label="Your name"
                                 type="text"
                                 v-model="name"
                             ></v-text-field>
                             <v-text-field
                                 name="phone"
-                                label="Phone"
+                                label="Your phone"
                                 type="text"
                                 v-model="phone"
                             ></v-text-field>
@@ -34,16 +34,15 @@
                     <v-flex xs12>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn 
-                                dark 
-                                color="light-blue darken-4" 
+                            <v-btn
+                                flat
                                 outline 
                                 @click="onCancel"
                                 :disabled="localLoading"
                             >Close</v-btn>
-                            <v-btn 
-                                dark 
-                                color="light-blue darken-4" 
+                            <v-btn
+                                flat
+                                class="success"
                                 @click="onSave"
                                 :disabled="localLoading"
                                 :loading="localLoading"
