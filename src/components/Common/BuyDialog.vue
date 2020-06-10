@@ -1,6 +1,6 @@
 <template>
     <v-dialog width="400px" v-model="dialog">
-        <v-btn dark color="light-blue darken-4" class="primary" slot="activator">Bay</v-btn>
+        <v-btn dark color="light-blue darken-4" rounded slot="activator">Bay</v-btn>
         <v-card>
             <v-container>
                 <v-layout row>
@@ -78,7 +78,7 @@ export default {
                 this.$store.dispatch('createOrder', {
                     name: this.name,
                     phone: this.phone,
-                    productId: this.productId,
+                    productId: this.product.id,
                     ownerId: this.product.ownerId
                 })
                 .finally(() => {
